@@ -1,0 +1,16 @@
+APEX DATA-BRIDGE (ADB) - MAINTENANCE POLICY
+
+1. FIRMWARE UPDATES
+- Critical security patches are applied automatically between 02:00 and 04:00 local time.
+- Feature updates must be manually approved by an admin in the dashboard.
+- We recommend checking for updates at least once per month.
+
+2. BACKUP PROCEDURES
+- The ADB's internal configuration database is automatically backed up daily at midnight to the configured cloud storage bucket.
+- We retain the last 7 daily backups.
+- To perform an on-demand backup, use the 'Backup Now' button on the 'System Health' page.
+
+3. CLEANING
+- The ADB physical unit has no user-serviceable parts.
+- Do not open the chassis.
+- Dust can be cleared from the side vents using compressed air. Do not use liquid cleaners.

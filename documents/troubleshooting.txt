@@ -1,0 +1,21 @@
+APEX DATA-BRIDGE (ADB) - TROUBLESHOOTING GUIDE
+
+1. ERROR CODE: 'E-SYNC-FAIL'
+Description: This error occurs when the ADB cannot synchronize with the source database for more than 5 minutes.
+Resolution:
+- Check network connectivity between the ADB appliance and the source DB server.
+- Verify that port 5432 is open on the firewall.
+- A temporary workaround is to restart the 'apex-sync' service using the CLI command: 'adb-cli restart sync'.
+
+2. PERFORMANCE: SLOW DATA TRANSFER
+Description: Transfer speeds drop below 10MB/s.
+Resolution:
+- Ensure the ADB is not placed on a shared network segment.
+- Check for 'Packet Loss' warnings in the main dashboard.
+- We recommend using direct fiber connection for optimal performance.
+
+3. DEVICE UNRESPONSIVE
+Description: The physical unit's status light is solid red.
+Resolution:
+- Perform a hard reset by pressing the recessed button on the back panel for 10 seconds. The light should flash orange.
+- If the light remains solid red, the unit requires hardware replacement.

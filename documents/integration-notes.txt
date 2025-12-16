@@ -1,0 +1,16 @@
+APEX DATA-BRIDGE (ADB) - INTEGRATION NOTES
+
+1. API AUTHENTICATION
+- All API requests to the ADB must be authenticated using a Bearer Token.
+- The token is generated in the Admin Console under 'Settings -> Security -> API Tokens'.
+- The token has a lifespan of 24 hours by default.
+
+2. WEBOOK CONFIGURATION
+- The ADB can send webhooks for specific events (e.g., 'sync_completed', 'sync_failed').
+- To configure, send a POST request to '/api/v1/webhooks' with a JSON payload specifying the 'event_type' and 'callback_url'.
+- The ADB will expect a 200 OK response from your callback URL within 3 seconds; otherwise, it will retry up to 3 times.
+
+3. DATA FORMAT SUPPORT
+- The current ADB firmware (v2.1) supports ingestion of CSV, JSON, and Parquet formats.
+- XML support was deprecated in v1.5 and is no longer available.
+- For JSON files, the root element must be an array of objects.
