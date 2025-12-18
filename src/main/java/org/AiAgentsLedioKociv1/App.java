@@ -1,5 +1,6 @@
 package org.AiAgentsLedioKociv1;
 
+import com.google.gson.JsonObject;
 import org.AiAgentsLedioKociv1.agents.BillingAgent;
 import org.AiAgentsLedioKociv1.agents.RouterAgent;
 import org.AiAgentsLedioKociv1.agents.TechnicalAgent;
@@ -11,7 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class App 
+public class App
 {
     public static void main( String[] args ){
 
@@ -50,9 +51,21 @@ public class App
 
             // this is where the agents are being "called by the router"
             String response = switch (route) {
+                // Ensure this matches your TechnicalAgent method name (I used 'handle' in previous steps)
                 case "TECHNICAL" -> techAgent.handleRequest(input, chatHistory.toString());
                 case "BILLING" -> billingAgent.handle(input, chatHistory.toString());
-                default -> client.generateContent("You are an assistant. Reply to: " + input);
+                default -> {
+                    // FIX: Pass 'null' for tools, and extract text from the JSON object
+                    JsonObject json = client.generateContent("You are an assistant. Reply to: " + input, null);
+                    try {
+                        yield json.getAsJsonObject("content")
+                                .getAsJsonArray("parts")
+                                .get(0).getAsJsonObject()
+                                .get("text").getAsString();
+                    } catch (Exception e) {
+                        yield "I didn't catch that.";
+                    }
+                }
             };
 
             System.out.println("Agent: " + response);
@@ -76,4 +89,3 @@ public class App
         } catch (Exception e) { e.printStackTrace(); }
     }
 }
-

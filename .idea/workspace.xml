@@ -17,25 +17,14 @@
       <change afterPath="$PROJECT_DIR$/../AiAgentsLedioKoci/src/main/java/org/AiAgentsLedioKoci/KnowledgeBase.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../AiAgentsLedioKoci/src/main/java/org/AiAgentsLedioKoci/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../AiAgentsLedioKoci/src/main/java/org/BillingTools/BillingTools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documents/integration-notes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documents/maintenance-policy.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documents/troubleshooting.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/BillingAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/RouterAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/TechnicalAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/core/GeminiClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/core/KnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documents/integration-notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documents/integration-notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/BillingAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/BillingAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/RouterAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/RouterAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/TechnicalAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/agents/TechnicalAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/core/GeminiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/AiAgentsLedioKociv1/core/GeminiClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +39,11 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="36swffkp4biKzYJJW4hVXf41Tf5" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -63,16 +52,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.AiAgentsLedioKociv1.App" />

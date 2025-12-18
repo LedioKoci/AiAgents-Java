@@ -1,32 +1,42 @@
 package org.AiAgentsLedioKociv1.agents;
 
+import com.google.gson.JsonObject;
 import org.AiAgentsLedioKociv1.core.GeminiClient;
 
 public class RouterAgent {
+    private final GeminiClient client;
 
-    private  final GeminiClient client;
-
-    public RouterAgent(GeminiClient client){
+    public RouterAgent(GeminiClient client) {
         this.client = client;
     }
 
-    // the router agent needs to keep track of what was the earlier agent, to avoid going out of context
-    public String route(String userInput, String currentAgent){
+    public String route(String userInput, String currentAgent) {
 
-        String prompt = "Analyze the input and choose the best agent.\n" +
-                "Categories:\n" +
-                "TECHNICAL: for errors, equipment, troubleshooting, wifi.\n" +
-                "BILLING: for refunds, prices, account upgrades, ID numbers.\n" +
-                "CASUAL: for hello, goodbye, or off-topic.\n\n" +
-                "CONTEXT: The user is currently talking to the " + currentAgent + " agent.\n" +
-                "INSTRUCTION: If the input looks like a direct answer to the " + currentAgent + " agent (like a number, ID, or 'yes', or a subscription plan), keep it in that category.\n" +
-                "otherwise, classify based on the text.\n\n" +
+        String prompt = "You are an Intent Classifier for a Help Desk.\n" +
+                "The user is currently talking to the: " + currentAgent + " agent.\n\n" +
+                "RULES FOR ROUTING:\n" +
+                "1. STICKINESS: If the input is a short answer (like 'pro', 'basic', 'yes', 'no', '12345') or a direct response to a question, YOU MUST KEEP IT IN " + currentAgent + ".\n" +
+                "2. ONLY switch agents if the user explicitly changes the topic (e.g., 'I want to switch', 'Help me with something else').\n\n" +
+                "CATEGORIES:\n" +
+                "TECHNICAL: Router, wifi, red light, errors, firmware, connection.\n" +
+                "BILLING: Refunds, prices, plans (pro/basic), upgrades, ID numbers.\n" +
+                "CASUAL: Hello, goodbye, jokes, off-topic (ONLY if not related to the above).\n\n" +
                 "Reply ONLY with the category name.\n" +
                 "Input: " + userInput;
 
-        String response = client.generateContent(prompt);
+        // same reason as for technical agent
+        JsonObject response = client.generateContent(prompt, null);
 
-        // trimming the response to remove white spaces
-        return response.trim();
+        // here i extract text from the JSON response
+        try {
+            String text = response.getAsJsonObject("content")
+                    .getAsJsonArray("parts")
+                    .get(0).getAsJsonObject()
+                    .get("text").getAsString();
+
+            return text.trim().toUpperCase();
+        } catch (Exception e) {
+            return "CASUAL";
+        }
     }
 }

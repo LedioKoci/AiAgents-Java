@@ -1,6 +1,6 @@
 APEX DATA-BRIDGE (ADB) - INTEGRATION NOTES
 
-1. API AUTHENTICATION
+1. API AUTHENTICATIONq
 - All API requests to the ADB must be authenticated using a Bearer Token.
 - The token is generated in the Admin Console under 'Settings -> Security -> API Tokens'.
 - The token has a lifespan of 24 hours by default.

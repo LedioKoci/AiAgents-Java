@@ -1,5 +1,6 @@
 package org.AiAgentsLedioKociv1.agents;
 
+import com.google.gson.JsonObject;
 import org.AiAgentsLedioKociv1.core.GeminiClient;
 
 public class TechnicalAgent {
@@ -24,6 +25,17 @@ public class TechnicalAgent {
                 "Context: " + context + "\n\n" +
                 "User Question: " + input;
 
-        return client.generateContent(prompt);
+        // this is because teh tools are not needed
+        JsonObject response = client.generateContent(prompt, null);
+
+        // this is where i extract text manually
+        try {
+            return response.getAsJsonObject("content")
+                    .getAsJsonArray("parts")
+                    .get(0).getAsJsonObject()
+                    .get("text").getAsString();
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }

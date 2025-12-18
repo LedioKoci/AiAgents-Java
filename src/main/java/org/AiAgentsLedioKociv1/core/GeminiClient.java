@@ -25,7 +25,7 @@ public class GeminiClient {
         }
 
         // this method is used to generate the text content from gemini
-        public String generateContent(String prompt) {
+        public JsonObject generateContent(String prompt, JsonObject toolsConfig) {
 
             String url = baseUrl + "gemini-2.5-flash-lite:generateContent?key=" + apiKey;
 
@@ -43,34 +43,14 @@ public class GeminiClient {
             JsonObject payload = new JsonObject();
             payload.add("contents", contents);
 
-            try {
-
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(url))
-                        .header("Content-Type", "application/json")
-                        .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(payload)))
-                        .build();
-
-                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-                JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
-
-                if (jsonResponse.has("error")) {
-                    return jsonResponse.getAsJsonObject("error").get("message").getAsString();
-                }
-
-                // "candidates" is needed, it's how the gemini api documentation states
-                return jsonResponse.getAsJsonArray("candidates")
-                        .get(0).getAsJsonObject()
-                        .getAsJsonObject("content")
-                        .getAsJsonArray("parts")
-                        .get(0).getAsJsonObject()
-                        .get("text").getAsString();
-
-            } catch (Exception e) {
-                return "Error " + e.getMessage();
+            // by implementing toolsConfig, i am contacting directly the google API
+            if (toolsConfig != null) {
+                payload.add("tools", toolsConfig);
             }
+            String responseBody = sendPost(url, payload.toString());
+            JsonObject jsonResponse = gson.fromJson(responseBody, JsonObject.class);
 
+            return jsonResponse.getAsJsonArray("candidates").get(0).getAsJsonObject();
         }
 
         // and this method is used to get the vector value of a text, from the gemini api
@@ -112,7 +92,21 @@ public class GeminiClient {
                 System.err.println("Embedding Failed: " + e.getMessage());
                 return new float[0];
             }
-
-
         }
+
+        // i created this method to manage better the whole request procedure, instead of putting it all together which makes it look messy
+    private String sendPost(String url, String jsonBody){
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+                    .build();
+            return client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+        } catch (Exception e) {
+            return "{}";
+        }
+    }
+
+
 }
