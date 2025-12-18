@@ -1,4 +1,4 @@
-# Bare Metal AI Agents Help Desk
+# AI Agents Help Desk
 
 A low-level, Java-based CLI help desk application that implements a Multi-Agent architecture **without using high-level AI frameworks** (like LangChain or Spring AI).
 
@@ -27,7 +27,7 @@ The `RouterAgent` solves the "Agent Amnesia" problem by maintaining a **State Ma
 
 * **Language:** Java 11+
 * **LLM Provider:** Google Gemini API (REST)
-    * *Chat:* `gemini-1.5-flash`
+    * *Chat:* `gemini-2.5-flash-lite`
     * *Embeddings:* `text-embedding-004`
 * **Dependencies:**
     * `com.google.code.gson` (JSON Parsing)
